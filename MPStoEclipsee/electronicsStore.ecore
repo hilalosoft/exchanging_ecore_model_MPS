@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ecore:EPackage xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="electronicsStore" nsPrefix="org.eclipse.electronicsStore" nsURI="https://org.electronicStore" xmlns:xmi="http://www.omg.org/XMI" xmi:version="2.0">
+    <eClassifiers name="computerItem" xsi:type="ecore:EEnum">
+        <eLiterals name="Server" value="0"/>
+        <eLiterals name="Laptop" value="1"/>
+        <eLiterals name="PC" value="2"/>
+    </eClassifiers>
+    <eClassifiers name="item" xsi:type="ecore:EClass">
+        <eStructuralFeatures eType="#//computerItem" lowerBound="0" name="itemtype" upperBound="1" xsi:type="ecore:EAttribute"/>
+    </eClassifiers>
+    <eClassifiers name="Row" xsi:type="ecore:EClass">
+        <eStructuralFeatures eType="#//item" lowerBound="0" name="items" upperBound="-1" xsi:type="ecore:EReference"/>
+    </eClassifiers>
+    <eClassifiers name="Section" xsi:type="ecore:EClass">
+        <eStructuralFeatures eType="#//Row" lowerBound="0" name="rows" upperBound="-1" xsi:type="ecore:EReference"/>
+    </eClassifiers>
+    <eClassifiers eSuperTypes="#//Room" name="Office" xsi:type="ecore:EClass">
+        <eStructuralFeatures eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" lowerBound="0" name="officeId" upperBound="1" xsi:type="ecore:EAttribute"/>
+    </eClassifiers>
+    <eClassifiers eSuperTypes="#//Room" name="Storage" xsi:type="ecore:EClass">
+        <eStructuralFeatures eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" lowerBound="0" name="storageId" upperBound="1" xsi:type="ecore:EAttribute"/>
+    </eClassifiers>
+    <eClassifiers abstract="true" name="Room" xsi:type="ecore:EClass">
+        <eStructuralFeatures eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBigDecimal" lowerBound="0" name="Height" upperBound="1" xsi:type="ecore:EAttribute"/>
+        <eStructuralFeatures eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBigDecimal" lowerBound="0" name="Width" upperBound="1" xsi:type="ecore:EAttribute"/>
+    </eClassifiers>
+    <eClassifiers name="electronicStore" xsi:type="ecore:EClass">
+        <eOperations lowerBound="0" name="openStore" upperBound="1"/>
+        <eStructuralFeatures eType="#//Section" lowerBound="0" name="Sections" upperBound="-1" xsi:type="ecore:EReference"/>
+        <eStructuralFeatures eType="#//Office" lowerBound="0" name="Offices" upperBound="2" xsi:type="ecore:EReference"/>
+    </eClassifiers>
+</ecore:EPackage>
