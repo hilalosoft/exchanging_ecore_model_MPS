@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ecore:EPackage xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="smartHome" nsPrefix="org.eclipse.smartHome" nsURI="https://org/eclipse/smartHome" xmlns:xmi="http://www.omg.org/XMI" xmi:version="2.0">
+    <eClassifiers eSuperTypes="#//sensor" name="smokeSensor" xsi:type="ecore:EClass"/>
+    <eClassifiers eSuperTypes="#//sensor" name="movementSensor" xsi:type="ecore:EClass"/>
+    <eClassifiers eSuperTypes="#//room" name="bathroom" xsi:type="ecore:EClass"/>
+    <eClassifiers eSuperTypes="#//sensor" name="camera" xsi:type="ecore:EClass"/>
+    <eClassifiers eSuperTypes="#//sensor" name="fireSensor" xsi:type="ecore:EClass"/>
+    <eClassifiers eSuperTypes="#//room" name="bedroom" xsi:type="ecore:EClass"/>
+    <eClassifiers eSuperTypes="#//room" name="kitchen" xsi:type="ecore:EClass"/>
+
+    <eClassifiers name="material" xsi:type="ecore:EEnum">
+        <eLiterals literal="al" name="Aluminium" value="1"/>
+        <eLiterals literal="wd" name="Wood" value="2"/>
+        <eLiterals literal="pl" name="Plastic" value="3"/>
+    </eClassifiers>
+    <eClassifiers name="light" xsi:type="ecore:EClass">
+        <eStructuralFeatures eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" lowerBound="0" name="lightId" ordered="true" unique="true" upperBound="1" xsi:type="ecore:EAttribute"/>
+    </eClassifiers>
+    <eClassifiers name="corridor" xsi:type="ecore:EClass">
+        <eStructuralFeatures eType="#//room" lowerBound="0" name="room" ordered="true" resolveProxies="true" unique="true" upperBound="1" xsi:type="ecore:EReference"/>
+    </eClassifiers>
+    <eClassifiers name="wall" xsi:type="ecore:EClass">
+        <eStructuralFeatures eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBigDecimal" lowerBound="0" name="width" ordered="true" unique="true" upperBound="1" xsi:type="ecore:EAttribute"/>
+        <eStructuralFeatures eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBigDecimal" lowerBound="0" name="height" ordered="true" unique="true" upperBound="1" xsi:type="ecore:EAttribute"/>
+        <eStructuralFeatures eType="#//material" lowerBound="0" name="wallType" ordered="true" unique="true" upperBound="1" xsi:type="ecore:EAttribute"/>
+    </eClassifiers>
+    <eClassifiers name="furniture" xsi:type="ecore:EClass">
+        <eStructuralFeatures eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" lowerBound="0" name="furniture_id" ordered="true" unique="true" upperBound="1" xsi:type="ecore:EAttribute"/>
+    </eClassifiers>
+    <eClassifiers name="alarm" xsi:type="ecore:EClass">
+        <eOperations lowerBound="0" name="start_alarm" ordered="true" unique="true" upperBound="1"/>
+    </eClassifiers>
+    <eClassifiers abstract="true" name="sensor" xsi:type="ecore:EClass">
+        <eStructuralFeatures eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" lowerBound="0" name="sensorId" ordered="true" unique="true" upperBound="1" xsi:type="ecore:EAttribute"/>
+    </eClassifiers>
+    <eClassifiers abstract="true" name="room" xsi:type="ecore:EClass">
+        <eStructuralFeatures eType="#//sensor" lowerBound="0" name="sensor" ordered="true" resolveProxies="true" unique="true" upperBound="-1" xsi:type="ecore:EReference"/>
+        <eStructuralFeatures eType="#//window" lowerBound="0" name="window" ordered="true" resolveProxies="true" unique="true" upperBound="-1" xsi:type="ecore:EReference"/>
+        <eStructuralFeatures eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" lowerBound="0" name="roomId" upperBound="1" xsi:type="ecore:EAttribute"/>
+        <eStructuralFeatures containment="true" eType="#//light" lowerBound="0" name="light" upperBound="-1" xsi:type="ecore:EReference"/>
+        <eStructuralFeatures containment="true" eType="#//wall" lowerBound="0" name="wall" upperBound="1" xsi:type="ecore:EReference"/>
+        <eStructuralFeatures containment="true" eType="#//door" lowerBound="0" name="door" upperBound="-1" xsi:type="ecore:EReference"/>
+        <eStructuralFeatures containment="true" eType="#//furniture" lowerBound="0" name="furniture" upperBound="-1" xsi:type="ecore:EReference"/>
+        <eStructuralFeatures eType="#//alarm" lowerBound="0" name="alarm" upperBound="1" xsi:type="ecore:EReference"/>
+        <eStructuralFeatures eType="#//corridor" lowerBound="0" name="corridor" upperBound="1" xsi:type="ecore:EReference"/>
+    </eClassifiers>
+    <eClassifiers name="window" xsi:type="ecore:EClass">
+        <eStructuralFeatures eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" lowerBound="0" name="EBoolean" ordered="true" unique="true" upperBound="1" xsi:type="ecore:EAttribute"/>
+        <eStructuralFeatures eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" lowerBound="0" name="windowId" ordered="true" unique="true" upperBound="1" xsi:type="ecore:EAttribute"/>
+        <eStructuralFeatures eType="#//sensor" lowerBound="0" name="sensor" upperBound="1" xsi:type="ecore:EReference"/>
+    </eClassifiers>
+    <eClassifiers name="door" xsi:type="ecore:EClass">
+        <eStructuralFeatures eType="#//sensor" lowerBound="0" name="sensor" ordered="true" resolveProxies="true" unique="true" upperBound="1" xsi:type="ecore:EReference"/>
+        <eStructuralFeatures eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" lowerBound="0" name="state" ordered="true" unique="true" upperBound="1" xsi:type="ecore:EAttribute"/>
+        <eStructuralFeatures eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" lowerBound="0" name="doorId" ordered="true" unique="true" upperBound="1" xsi:type="ecore:EAttribute"/>
+    </eClassifiers>
+    <eClassifiers name="smartHome" xsi:type="ecore:EClass">
+        <eStructuralFeatures eType="#//room" lowerBound="0" name="room" upperBound="-1" xsi:type="ecore:EReference"/>
+        <eStructuralFeatures eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" lowerBound="0" name="name" ordered="true" unique="true" upperBound="1" xsi:type="ecore:EAttribute"/>
+        <eStructuralFeatures eType="#//corridor" lowerBound="0" name="corridor" upperBound="-1" xsi:type="ecore:EReference"/>
+    </eClassifiers>
+</ecore:EPackage>
