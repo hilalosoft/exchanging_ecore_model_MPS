@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="mDEHomework2" nsURI="http://www.example.org/mDEHomework2" nsPrefix="mDEHomework2">
+  <eClassifiers xsi:type="ecore:EClass" name="Terminal">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="busstop" lowerBound="1"
+        upperBound="-1" eType="#//BusStop" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="taxistand" lowerBound="1"
+        upperBound="-1" eType="#//TaxiStand" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="securitycenter" upperBound="-1"
+        eType="#//SecurityCenter" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="unitwithfacilities" lowerBound="4"
+        upperBound="-1" eType="#//UnitWithFacilities" derived="true" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Name" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="section" upperBound="-1"
+        eType="#//Section" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="NumberOfFacilities" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Integer"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AirportSystem">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="terminal" upperBound="-1"
+        eType="#//Terminal" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="corridors" upperBound="-1"
+        eType="#//Corridors" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Name" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Corridors">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="connection" lowerBound="1"
+        eType="#//Terminal"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="connection2" lowerBound="1"
+        eType="#//Terminal"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ID" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"
+        transient="true" iD="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Departure" eSuperTypes="#//Section">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="departuregate" upperBound="-1"
+        eType="#//DepartureGate" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Check_in">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ID" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"
+        transient="true" iD="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Company" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Arrival" eSuperTypes="#//Section">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="arrivalgate" upperBound="-1"
+        eType="#//ArrivalGate" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BaggageClaim">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ID" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"
+        transient="true" iD="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Gate" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Name" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Integer"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="UnitWithFacilities" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ID" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"
+        transient="true" iD="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TaxiStand">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ID" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BusStop">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ID" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SecurityCenter">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ID" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Section" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="numberOfGates" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Integer"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="gate" upperBound="-1" eType="#//Gate"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DepartureGate" eSuperTypes="#//Gate">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="check_in" upperBound="-1"
+        eType="#//Check_in" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ArrivalGate" eSuperTypes="#//Gate">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="baggageclaim" upperBound="-1"
+        eType="#//BaggageClaim" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="WC" eSuperTypes="#//UnitWithFacilities"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Elevator" eSuperTypes="#//UnitWithFacilities"/>
+  <eClassifiers xsi:type="ecore:EClass" name="InfoPoint" eSuperTypes="#//UnitWithFacilities"/>
+</ecore:EPackage>
