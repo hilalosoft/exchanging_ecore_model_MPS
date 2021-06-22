@@ -12,6 +12,8 @@
         <eLiterals literal="al" name="Aluminium" value="1"/>
         <eLiterals literal="wd" name="Wood" value="2"/>
         <eLiterals literal="pl" name="Plastic" value="3"/>
+        <eLiterals literal="ce" name="Cement" value="4"/>
+        <eLiterals literal="gl" name="Glass" value="5"/>
     </eClassifiers>
     <eClassifiers name="light" xsi:type="ecore:EClass">
         <eStructuralFeatures eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" lowerBound="0" name="lightId" ordered="true" unique="true" upperBound="1" xsi:type="ecore:EAttribute"/>
