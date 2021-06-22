@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ecore:EPackage xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    name="familymodel" nsPrefix="familymodel" nsURI="http://www.example.org/familymodel" xmlns:xmi="http://www.omg.org/XMI" xmi:version="2.0">
+    <eClassifiers name="Gender" xsi:type="ecore:EEnum">
+        <eLiterals  literal="m" name="Male" value="0"/>
+        <eLiterals  name="Female" value="1"/>
+    </eClassifiers>
+    <eClassifiers name="Family" xsi:type="ecore:EClass">
+        <eStructuralFeatures eType="#//Person" lowerBound="0" name="Person" upperBound="-1" xsi:type="ecore:EReference"/>
+    </eClassifiers>
+    <eClassifiers name="Person" xsi:type="ecore:EClass">
+        <eStructuralFeatures eType="#//Person" lowerBound="0" name="children" upperBound="-1" xsi:type="ecore:EReference"/>
+        <eStructuralFeatures eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" name="name" xsi:type="ecore:EAttribute"/>
+        <eStructuralFeatures eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" name="age" xsi:type="ecore:EAttribute"/>
+        <eStructuralFeatures eType="#//Gender" name="gender"  xsi:type="ecore:EAttribute"/>
+        <eStructuralFeatures eType="#//Person" name="partner" xsi:type="ecore:EReference"/>
+    </eClassifiers>
+</ecore:EPackage>
+
+
